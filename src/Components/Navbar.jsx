@@ -1,39 +1,42 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Navbar({ cartCount }) {
+  const navStyle = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '1rem 5%',
+    backgroundColor: '#2e4057',
+    color: '#fff',
+    flexWrap: 'wrap'
+  };
+
+  const linkStyle = {
+    color: '#fff',
+    textDecoration: 'none',
+    margin: '0 10px',
+    fontWeight: '500'
+  };
+
+  const logoStyle = {
+    fontWeight: 'bold',
+    fontSize: '1.5rem'
+  };
+
   return (
-    <nav
-      className="navbar"
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#2f4f4f',
-        padding: '15px',
-        color: 'white'
-      }}
-    >
-      <h2 style={{ margin: '0 0 10px 0', fontSize: '1.8rem' }}>
-        Handloom<span style={{ color: '#f4c430' }}>Fashion</span>
-      </h2>
-      <ul
-        style={{
-          display: 'flex',
-          listStyle: 'none',
-          gap: '20px',
-          padding: 0,
-          margin: 0
-        }}
-      >
-        <li><Link to="/" style={{ color: 'white', textDecoration: 'none' }}>Home</Link></li>
-        <li><Link to="/products" style={{ color: 'white', textDecoration: 'none' }}>Products</Link></li>
-        <li><Link to="/cart" style={{ color: 'white', textDecoration: 'none' }}>Cart 🛒 ({cartCount})</Link></li>
-        <li><Link to="/contact" style={{ color: 'white', textDecoration: 'none' }}>Contact</Link></li>
-        <li><Link to="/admin" style={{ color: 'white', textDecoration: 'none' }}>Admin Tools</Link></li>
-        <li><Link to="/user" style={{ color: 'white', textDecoration: 'none' }}>User Tools</Link></li>
-      </ul>
+    <nav style={navStyle}>
+      <div style={logoStyle}>
+        Handloom <span style={{ color: '#f4c430' }}>Fashion</span>
+      </div>
+      <div>
+        <Link to="/" style={linkStyle}>Home</Link>
+        <Link to="/products" style={linkStyle}>Products</Link>
+        <Link to="/cart" style={linkStyle}>Cart ({cartCount})</Link>
+        <Link to="/contact" style={linkStyle}>Contact</Link>
+        <Link to="/user" style={linkStyle}>User Login</Link>
+        <Link to="/admin" style={linkStyle}>Admin</Link>
+      </div>
     </nav>
-  )
+  );
 }
